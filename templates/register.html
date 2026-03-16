@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{%block title%}REGISTER{% endblock %}
+<style>
+    .flash {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 6px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flash.success {
+    background-color: #c8f7c5;
+    color: #2d7a2c;
+}
+
+.flash.warning {
+    background-color: #ffe1e1;
+    color: #a33a3a;
+}
+
+</style>
+{% block content %}
+<h2>REGISTER</h2>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for category, message in messages %}
+      <div class="flash {{ category }}">{{ message }}</div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+<form method="POST">
+    {{form.hidden_tag()}}
+    <p>{{form.username.label}}<br>{{form.username(size=40)}}</p>
+    <p>{{form.email.label}}<br>{{form.email(size=40)}}</p>
+    <p>{{form.password.label}}<br>{{form.password(size=40)}}</p>
+    <p>{{form.submit()}}</p>
+</form>
+<a href="{{url_for('login')}}">DO YOU ALREADY HAVE AN ACCOUNT?</a>
+{% endblock  %}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block title %}Edit Book{% endblock %}
+
+{% block content %}
+<h2>Edit Book</h2>
+
+<form method="POST">
+    <p>
+        <label>Kitap Adı</label><br>
+        <input type="text" name="title" value="{{ book.title }}" required>
+    </p>
+
+    <p>
+        <label>Yazar</label><br>
+        <input type="text" name="author" value="{{ book.author }}" required>
+    </p>
+
+    <p>
+        <label>Stok</label><br>
+        <input type="number" name="stock" value="{{ book.stock }}">
+    </p>
+
+    <p>
+        <button type="submit">Submit</button>
+    </p>
+</form>
+
+<a href="{{ url_for('index') }}">BACK</a>
+{% endblock %}

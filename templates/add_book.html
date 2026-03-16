@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}Add Book{% endblock %}
+
+{% block content %}
+<h2>Yeni Kitap Ekle</h2>
+<form method="POST">
+    {{ form.hidden_tag() }}
+
+    <p>
+        {{ form.title.label }} <br>
+        {{ form.title(size=40) }}
+    </p>
+
+    <p>
+        {{ form.author.label }} <br>
+        {{ form.author(size=40) }}
+    </p>
+
+    <p>
+        {{ form.stock.label }} <br>
+        {{ form.stock() }}
+    </p>
+
+    <p>{{ form.submit() }}</p>
+</form>
+
+<a href="{{ url_for('index') }}">Geri Dön</a>
+{% endblock %}
